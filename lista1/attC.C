@@ -75,11 +75,17 @@ int main() {
         else if (investido == 3) {
             int i1, i2, i3;
             scanf("%d %d %d", &i1, &i2, &i3);
-            if (i1 % 3 == 0 || i2 % 3 == 0 || i3 % 3 == 0) {
+            if (i1 % 3 == 0 && i2 % 3 == 0 && i3 % 3 == 0) {
                 printf("%d\n", (i1 / 3) + (i2 / 3) + (i3 / 3));
-            }
+            } else if (i1 % 3 == 0 && i2 % 3 == 0 && i3 % 3 != 0) {
+                printf("%d\n", (i1 / 3) + (i2 / 3));
+            } else if (i1 % 3 == 0 && i2 % 3 != 0 && i3 % 3 == 0) {
+                printf("%d\n", (i1 / 3) + (i3 / 3));
+            } else if (i1 % 3 != 0 && i2 % 3 == 0 && i3 % 3 == 0) {
+                printf("%d\n", (i2 / 3) + (i3 / 3));
+            } 
         }
-
+        
         // Verificação do transporte (3 reais iniciais + lucro obtido)
         if (3 + lucro_rebeka >= 7) {
             printf("Ela conseguiu! Rebeka voltou para casa e apanhou da mae por sumir noite passada!\n");
