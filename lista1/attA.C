@@ -35,7 +35,7 @@ int main(){
     else if(cor == 5) {printf ("Cor: Azul.\n");}
     else if(cor == 6) {printf ("Cor: Roxo.\n");}
     else if(cor == 7) {printf ("Cor: Marrom.\n");}
-    else if(cor == 8) {printf ("Cor:Rosa.\n");}
+    else if(cor == 8) {printf ("Cor: Rosa.\n");}
     else if(cor == 9) {printf ("Cor: Preto.\n");}
     else {printf ("Cor: Branco.\n");}
 
