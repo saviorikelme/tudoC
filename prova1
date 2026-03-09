@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main(){
+    int V1, V2, V3, D, d1, d2, caminhodireto, caminhop2, energia;
+    
+    scanf("%d %d %d %d", &V1, &V2, &V3, &D);
+
+    caminhodireto = V1 + V3;
+    caminhop2 = V1 + V2 + V3; 
+
+    d1 = D/10;
+    d2 = D%10;
+
+    if(d1 > d2){
+        caminhodireto = V1 + V3 + (d1 - d2);
+    } else if(d2 > d1){
+        caminhop2 = V1 + V2 + V3 + (d2 - d1);
+    } else{
+        caminhodireto = V1 + V3 + d1 + d2;
+        caminhop2 = V1 + V2 + V3 + d1 + d2; 
+    }
+
+    if(caminhodireto > caminhop2) {
+        energia = caminhodireto;
+        printf("Caminho: direto. ");
+    } else{
+        energia = caminhop2;
+        printf("Caminho: P2. ");
+    }
+
+    if(energia > 30){
+        printf("Xupenio aprova! Nível: ELITE.");
+    } else if(10 <= energia){
+        printf("Boa caminhada! Nível: SÓLIDO.");
+    } else if(0 <= energia){
+        printf("Passou por pouco. Nível: BÁSICO.");
+    } else {
+        printf("Xupenio reprova. Nível: CRÍTICO.");
+    }
+
+    return 0;
+}
