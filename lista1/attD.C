@@ -29,17 +29,17 @@ int main() {
     // Se o quadrante a evitar compartilha o eixo X com o atual, move-se em Y primeiro para "subir/descer" e fugir dele.
     // Se compartilha o eixo Y, move-se em X primeiro para "ir pros lados" e fugir dele.
     
-    if (q_atual == 1) { // Adjacentes: 2 (eixo Y) e 4 (eixo X)
+    if (q_atual == 1) { // Adjacentes: 2 (eixo X) e 4 (eixo Y)
         if (c == 2) printf("%d passos em y e %d passos em x\n", dy, dx);
         else if (c == 4) printf("%d passos em x e %d passos em y\n", dx, dy);
         else printf("caminhada invalida\n");
     } 
     else if (q_atual == 2) { // Adjacentes: 1 (eixo X) e 3 (eixo Y)
-        if (c == 1) printf("%d passos em x e %d passos em y\n", dx, dy);
-        else if (c == 3) printf("%d passos em y e %d passos em x\n", dy, dx);
+        if (c == 1) printf("%d passos em y e %d passos em x\n", dy, dx);
+        else if (c == 3) printf("%d passos em x e %d passos em y\n", dx, dy);
         else printf("caminhada invalida\n");
     }
-    else if (q_atual == 3) { // Adjacentes: 2 (eixo X) e 4 (eixo Y)
+    else if (q_atual == 3) { // Adjacentes: 2 (eixo Y) e 4 (eixo X)
         if (c == 2) printf("%d passos em x e %d passos em y\n", dx, dy);
         else if (c == 4) printf("%d passos em y e %d passos em x\n", dy, dx);
         else printf("caminhada invalida\n");
