@@ -1,0 +1,6 @@
+A. essa primeira questão eu fiz da minha cabeça, tive somente um pequeno entrave no momento de printar as letras de maneira decrescente, pedi auxilio ao gemini nesse momento.
+B. essa questão eu entendi o que foi pedido pela questão, porém travei na criação da lógica matemática do código, assim pedi para o gemini criar e me explicar o motivo de cada trecho do código e onde ele se relaciona com cada parte do problema.
+C. essa questão eu fiquei em dúvida na hora de ler e tomei um tempo somente para interpretar o que foi pedido, após isso pedi que o gemini criasse o código e explicasse de modo similar ao que pedi na questão anterior.
+D. essa questão eu fiz após ter feito já o teste, então eu já tinha uma boa ideia do que deveria ser feito, porém assim como no teste desse conteúdo eu não consegui criar um código que resolvesse todo o problema, após isso eu pedi inicialmente
+   ao gemini que resolvesse o problema, levou muito tempo e tentativas e ele não solucionava, após isso recorri ao chat gpt, que após algumas tentativas deu um código quase certo, que só falhava em um teste case, após um dos monitores me informar
+   qual era o problema gerado eu voltei ao caht gpt para que ele resolvesse essa parte, demorou umas 3 tentativas e depois ele fez certo, então eu estudei cada trecho do código gerado.
