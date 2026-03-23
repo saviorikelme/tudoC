@@ -1,0 +1,185 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(){
+    char s[101] = {0};
+    char s_original[101] = {0};
+    int inicios[100] = {0};
+    int fins[100] = {0};
+    int palavras = 0;
+    int vizinhas = 0;
+
+    fgets(s, 101, stdin);
+    strcpy(s_original, s);
+
+    int tam_s = 0;
+    while(tam_s < 101){
+        if (s[tam_s] == '\n'){
+            s[tam_s] == '\0';
+            break;
+        }
+        tam_s++;
+    }
+    
+    // convertendo maiusculas para minusculas
+    for(int i = 0; i < tam_s; i++) {
+        while(s[i] == ' '){
+            i++;
+        }
+        if(s[i] >= 65 && s[i] <= 90){
+            s[i] = s[i] + 32;
+        }
+    }
+
+    // definindo inicios, fins e qtd das palavras
+    int pos_fim = 0;
+    int pos_inicio = 0;
+
+    for(int i = 0; i <= tam_s; i++){
+        for(int j = 0; j <= i; j++){
+            if(s[i] == ' ' && s[i-1] != ' ' && i != 0){
+                fins[pos_fim] = i;
+                pos_fim++;
+                palavras++;
+                j++;
+                break;
+            }else if(s[i] != ' ' && s[i-1] == ' ' && i != 0){
+                inicios[pos_inicio] = i;
+                pos_inicio++;
+                j++;
+                break;
+            }else if(s[i] != ' ' && i == 0){
+                inicios[pos_inicio] = i;
+                pos_inicio++;
+                j++;
+                break;
+            }else if(i == tam_s){
+                fins[pos_fim] = i;
+                pos_fim++;
+                palavras++;
+                j++;
+                break;
+            }else{
+                j++;
+            }
+        }
+    }
+    //lógica para analisar cada letra de cada palavra
+    for(int i = 0; i < palavras; i++){
+        //definindo o tamanho de um par de palavras
+        int tam1 = fins[i] - inicios[i];
+        for(int j = i+1; j < palavras; j++){
+            int tam2 = fins[j] - inicios[j];
+
+            if(tam1 == tam2){
+                // criando um vetor para ser um alfabeto a ser somado cada vez q cada letra aparecer em cada posicao dela
+                int alfabeto[26] = {0};
+
+                //fazendo o acrescimos e decrescimos de letras dentro do alfabeto para criar uma comparacao
+                for(int k = inicios[i]; k < fins[i]; k++){
+                    for(char letra = 'a'; letra <= 'z'; letra++){
+                        if(s[k] == letra){
+                            alfabeto[letra - 97] = alfabeto[letra - 97] + 1;
+                        }
+                    }   
+                }
+
+                for(int k = inicios[j]; k < fins[j]; k++){
+                    for(char letra = 'a'; letra <= 'z'; letra++){
+                        if(s[k] == letra){
+                        alfabeto[letra - 97] = alfabeto[letra - 97] - 1;
+                        }
+                    }
+                }
+                
+                int diferenca = 0;
+                for(int k = 0; k < 26; k++){
+                    if(alfabeto[k] != 0){
+                        diferenca++;
+                    }
+                }
+
+                if(diferenca != 1){
+                    diferenca = diferenca/2;
+                }
+
+                if(diferenca == 1){
+                    if(i == 0 && j == 1){
+                        printf("Pares de palavras vizinhas encontrados:\n");
+                    }
+                    vizinhas++;
+                    for (int k = inicios[i]; k < fins[i]; k++){
+                        printf("%c", s_original[k]);
+                    }
+                    printf(" e ");
+                    for (int k = inicios[j]; k < fins[j]; k++){
+                        if(k != fins[j] - 1){
+                            printf("%c", s_original[k]);
+                        }else{
+                            printf("%c\n", s_original[k]);
+                        }
+                    }
+                }
+            }else if(tam1 == tam2 - 1 || tam1 == tam2 + 1){
+                // criando um vetor para ser um alfabeto a ser somado cada vez q cada letra aparecer em cada posicao dela
+                int alfabeto[26] = {0};
+
+                //fazendo o acrescimos e decrescimos de letras dentro do alfabeto para criar uma comparacao
+                for(int k = inicios[i]; k < fins[i]; k++){
+                    for(char letra = 'a'; letra <= 'z'; letra++){
+                        if(s[k] == letra){
+                            alfabeto[letra - 97] = alfabeto[letra - 97] + 1;
+                        }
+                    }   
+                }
+
+                for(int k = inicios[j]; k < fins[j]; k++){
+                    for(char letra = 'a'; letra <= 'z'; letra++){
+                        if(s[k] == letra){
+                        alfabeto[letra - 97] = alfabeto[letra - 97] - 1;
+                        }
+                    }
+                }
+                
+                int diferenca = 0;
+                for(int k = 0; k < 26; k++){
+                    if(alfabeto[k] != 0){
+                        diferenca++;
+                    }
+                }
+                int resto = 0;
+                if(diferenca != 1){
+                    resto = diferenca %2;
+                    diferenca = diferenca/2;
+                    
+                }
+
+                if(diferenca == 1 && resto == 0){
+                    if(i == 0 && j == 1){
+                        printf("Pares de palavras vizinhas encontrados:\n");
+                    }
+                    vizinhas++;
+                    for (int k = inicios[i]; k < fins[i]; k++){
+                        printf("%c", s_original[k]);
+                    }
+                    printf(" e ");
+                    for (int k = inicios[j]; k < fins[j]; k++){
+                        if(k != fins[j] - 1){
+                            printf("%c", s_original[k]);
+                        }else{
+                            printf("%c\n", s_original[k]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    if(vizinhas != 0){
+        printf("\nTotal de pares: %d", vizinhas);
+    }else{
+        printf("Nao existem palavras vizinhas na frase.");
+    }
+    
+    return 0;
+}
